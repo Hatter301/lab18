@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+	int m, i,j=0,p;
+	cin >> m;
+	if  (m <= 0)
+		cout << "Данные введены некорректно";
+	else {
+		int** v = (int**)malloc(m * sizeof(int*));
+			for (int i = 0; i < m; i++)
+				v[i] = (int*)malloc(m * sizeof(int));
+		for (i = 0; i < m; i++) 
+			for (j = 0; j < m ; j++) 
+				cin >> v[i][j];
+		for (i = 0; i < m; i++) 
+			cout << v[i][j] << " ";
+		j++;
+		p = m - 1;
+		while (p!= 0) {
+			for (j; j < p; j++)
+				cout << v[i][j]<<" ";
+			i--;
+			for (i; i < p; i--)
+				cout << v[i][j]<<" ";
+			p--;
+			j--;
+			for (j; j < p; j--)
+				cout << v[i][j]<<" ";
+			i--;
+			for (i; i < p; i++)
+				cout << v[i][j]<<" ";
+			p--;
+			j++;
+		}
+	}
+	return 0;
+}
