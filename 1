@@ -1,37 +1,63 @@
+#include<cstdlib>
 #include <iostream>
 #include <vector>
 using namespace std;
 int main() {
-	int m, i,j=0,p;
+	int m, i, j = 0, p,p1,p2,p3,p4,a;
 	cin >> m;
-	if  (m <= 0)
+	if (m <= 0)
 		cout << "Данные введены некорректно";
 	else {
-		int** v = (int**)malloc(m * sizeof(int*));
-			for (int i = 0; i < m; i++)
-				v[i] = (int*)malloc(m * sizeof(int));
-		for (i = 0; i < m; i++) 
-			for (j = 0; j < m ; j++) 
-				cin >> v[i][j];
-		for (i = 0; i < m; i++) 
+		vector <vector <int>> v(m, vector<int>(m));
+		for (i = 0; i < m; i++)
+			for (j = 0; j < m; j++) {
+				cin >> a;
+				v.push_back(a);
+			}
+		j = 0;
+		for (i = 0; i < m; i++)
 			cout << v[i][j] << " ";
 		j++;
+		i--;
 		p = m - 1;
-		while (p!= 0) {
-			for (j; j < p; j++)
-				cout << v[i][j]<<" ";
-			i--;
-			for (i; i < p; i--)
-				cout << v[i][j]<<" ";
-			p--;
+		p1 = -1; 
+		p2 = -1;
+		p3 = m;
+		p4 = m;
+		while (v.size!=0) {
+			for (j; j < p4; j++)
+				cout << v[i][j] << " ";
+			p4--;
 			j--;
-			for (j; j < p; j--)
-				cout << v[i][j]<<" ";
 			i--;
-			for (i; i < p; i++)
-				cout << v[i][j]<<" ";
-			p--;
+			if (v.size()==0)
+			exit(1);
+			for (i; i > p1; i--)
+				cout << v[i][j] << " ";
+			p1++;
+			i++;
+			j--;
+			p2++;
+			p3--;
+			if (v.size()==0)
+			exit(1);
+			for (j; j > p2; j--)
+				cout << v[i][j] << " ";
+			p2++;
 			j++;
+			i++;
+			if (v.size()==0)
+			exit(1);
+			for (i; i < p3; i++)
+				cout << v[i][j] << " ";
+			p3--;
+			i--;
+			j++;
+			p1++;
+			p4--;
+			p -= 2;
+			if (v.size()==0)
+			exit(1);
 		}
 	}
 	return 0;
