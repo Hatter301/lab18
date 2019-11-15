@@ -1,0 +1,33 @@
+#include<cstdlib>
+#include <iostream>
+using namespace std;
+int main() {
+	int m, i, j = 0, n, f = 0;
+	cin >> m;
+	cin >> n;
+	if ((m <= 0) || (n <= 0))
+		cout << "Данные введены некорректно";
+	else {
+		int** v = (int**)malloc(m * sizeof(int*));
+		for (int i = 0; i < m; i++)
+			v[i] = (int*)malloc(n * sizeof(int));
+		for (i = 0; i < m; i++)
+			for (j = 0; j < n; j++)
+				cin >> v[i][j];
+		j = 0;
+		while (j < n) {
+			for (i = 0; i < m; i++)
+				if (v[i][j] % 2 == 0)
+					f = 1;
+			if (f == 0) {
+				cout << j + 1;
+				delete[] v;
+				exit(1);
+			}
+			f = 0;
+			j++;
+		}
+		delete[] v;
+	}
+	return 0;
+}
