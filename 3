@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+	int m, i, j = 0,k,n,p=1,min;
+	cin >> m;
+	cin>>n;
+	if ((m <= 0)||(n<=0))
+		cout << "Данные введены некорректно";
+	else {
+	    min=INT_MAX;
+	int** v = (int**)malloc(m * sizeof(int*));
+			for (int i = 0; i < m; i++)
+				v[i] = (int*)malloc(n * sizeof(int));
+        for(i=0;i<m;i++)
+        for(j=0;j<n;j++)
+		cin>>v[i][j];
+		for (i=0;i<m;i++) {
+		for(j=0;j<n;j++) 
+		    p*=v[i][j];
+		if (p<min) {
+		    min=p;
+		    k=i;
+		}
+		}
+		cout<<k+1<<" "<<min;
+		delete[] v;
+	}
+	return 0;
+}
