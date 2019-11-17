@@ -1,0 +1,85 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main() {
+	int m, i, j,x=0,y,p,s=0;
+	cin >> m;
+	if (m <= 0) 
+		cout << "Данные введены некорректно";
+	else {
+		p = m*m;
+		x = -1;
+		y = m;
+		int** v = (int**)malloc(m * sizeof(int*));
+		for (int i = 0; i < m; i++)
+			v[i] = (int*)malloc(m * sizeof(int));
+		for (i = 0; i < m; i++)
+			for (j = 0; j < m; j++)
+				cin >> v[i][j];
+		cout << endl;
+		i = 0;
+		j = 0;
+		while (p > 0) {
+			for (i; i < y; i++) {
+				cout << v[i][j] << " ";
+				p--;
+				s++;
+			}
+			if (s == 0) {
+				cout << v[i][j] << " ";
+				p--;
+			}
+			if (p == 0)
+				exit(1);
+			s = 0;
+			i--;
+			j++;
+			for (j; j < y; j++) {
+				cout << v[i][j]<<" ";
+				p--;
+				s++;
+			}
+			if (s == 0) {
+				cout << v[i][j] << " ";
+				p--;
+			}
+			if (p == 0)
+				exit(1);
+			s = 0;
+			j--;
+			i--;
+			for (i; i > x; i--) {
+				cout << v[i][j] << " ";
+				p--;
+				s++;
+			}
+			if (s == 0) {
+				cout << v[i][j] << " ";
+				p--;
+			}
+			if (p == 0)
+				exit(1);
+			s = 0;
+			i++;
+			j--;
+			x++;
+			y--;
+			for (j; j > x; j--) {
+				cout << v[i][j] << " ";
+				p--;
+				s++;
+			}
+			if (s == 0) {
+				cout << v[i][j] << " ";
+				p--;
+			}
+			if (p == 0)
+				exit(1);
+			s = 0;
+			i++;
+			j++;
+		}
+		free(v);
+	}
+	return 0;
+}
